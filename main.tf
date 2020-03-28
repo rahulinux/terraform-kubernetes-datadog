@@ -195,7 +195,7 @@ resource "kubernetes_daemonset" "datadog_agent" {
 
           env {
             name = "DD_COLLECT_KUBERNETES_EVENTS"
-            value = "${var.datadog_agent_options_collect_kubernetes_events}"
+            value = var.datadog_agent_options_collect_kubernetes_events
           }
 
           env {
@@ -205,7 +205,7 @@ resource "kubernetes_daemonset" "datadog_agent" {
 
           env {
             name = "DD_APM_ENABLED"
-            value = "${var.datadog_agent_options_apm_enabled}"
+            value = var.datadog_agent_options_apm_enabled
           }
 
           env {
@@ -219,7 +219,7 @@ resource "kubernetes_daemonset" "datadog_agent" {
 
           env {
             name = "DD_KUBELET_TLS_VERIFY"
-            value = "${var.datadog_agent_options_kubelet_tls_verify}"
+            value = var.datadog_agent_options_kubelet_tls_verify
           }
 
           resources {
