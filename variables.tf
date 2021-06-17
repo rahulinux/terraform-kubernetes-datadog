@@ -63,6 +63,12 @@ variable "datadog_agent_options_apm_enabled" {
   description = "Enable APM logging?"
 }
 
+variable "datadog_agent_options_logs_enabled" {
+  type = bool
+  default = true
+  description = "Enable datadog logs?"
+}
+
 variable "datadog_agent_options_collect_kubernetes_events" {
   type = bool
   default = true

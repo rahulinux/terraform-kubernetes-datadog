@@ -207,6 +207,16 @@ resource "kubernetes_daemonset" "datadog_agent" {
             name = "DD_APM_ENABLED"
             value = var.datadog_agent_options_apm_enabled
           }
+          env {
+            name = "DD_LOGS_ENABLED"
+            value = var.datadog_agent_options_logs_enabled
+          }
+
+          env {
+            name = "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL"
+            value = var.datadog_agent_options_logs_enabled
+          }
+
 
           env {
             name = "DD_KUBERNETES_KUBELET_HOST"
@@ -223,12 +233,12 @@ resource "kubernetes_daemonset" "datadog_agent" {
           }
 
           resources {
-            requests {
+            requests = {
               memory = "256Mi"
               cpu = "200m"
             }
 
-            limits {
+            limits = {
               memory = "256Mi"
               cpu = "200m"
             }

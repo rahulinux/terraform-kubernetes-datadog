@@ -83,6 +83,7 @@ spec:
           - {name: cgroups, mountPath: /host/sys/fs/cgroup, readOnly: true}
           - {name: s6-run, mountPath: /var/run/s6}
           - {name: logpodpath, mountPath: /var/log/pods}
+          - {name: pointerdir, mountPath: /opt/datadog-agent/run}
           ## Docker runtime directory, replace this path with your container runtime
           ## logs directory, or remove this configuration if `/var/log/pods`
           ## is not a symlink to any other directory.
@@ -102,6 +103,7 @@ spec:
         - {name: cgroups, hostPath: {path: /sys/fs/cgroup}}
         - {name: s6-run, emptyDir: {}}
         - {name: logpodpath, hostPath: {path: /var/log/pods}}
+        - {name: pointerdir, hostPath: {path: /opt/datadog-agent/run}}
         ## Docker runtime directory, replace this path with your container runtime
         ## logs directory, or remove this configuration if `/var/log/pods`
         ## is not a symlink to any other directory.
