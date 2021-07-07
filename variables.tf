@@ -69,6 +69,13 @@ variable "datadog_agent_options_logs_enabled" {
   description = "Enable datadog logs?"
 }
 
+variable "kubernetes_cluster_name" {
+  type = string
+  default = ""
+  description = "kubernetes cluster name"
+
+}
+
 variable "datadog_agent_options_collect_kubernetes_events" {
   type = bool
   default = true

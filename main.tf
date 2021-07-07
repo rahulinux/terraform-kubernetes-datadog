@@ -213,6 +213,11 @@ resource "kubernetes_daemonset" "datadog_agent" {
           }
 
           env {
+            name = "DD_CLUSTER_NAME"
+            value = var.kubernetes_cluster_name
+          }
+
+          env {
             name = "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL"
             value = var.datadog_agent_options_logs_enabled
           }
