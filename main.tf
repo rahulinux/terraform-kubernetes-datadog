@@ -6,6 +6,7 @@ locals {
     "cookielab.io/application" = "metrics-server",
     "cookielab.io/process" = "bootstrap"
   }
+
   daemonset_labels = merge(
     {
       "cookielab.io/terraform-module" = "datadog",
@@ -139,7 +140,7 @@ resource "kubernetes_daemonset" "datadog_agent" {
     template {
       metadata {
         name = "datadog-agent"
-        labels = local.daemonset_selector_labels
+        labels = local.daemonset_labels
       }
 
       spec {
@@ -228,6 +229,15 @@ resource "kubernetes_daemonset" "datadog_agent" {
             value_from {
               field_ref {
                 field_path = "status.hostIP"
+              }
+            }
+          }
+
+          env {
+            name = "DD_ENV"
+            value_from {
+              field_ref {
+                field_path = "metadata.labels['tags.datadoghq.com/env']"
               }
             }
           }
